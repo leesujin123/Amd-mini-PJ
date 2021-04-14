@@ -1,0 +1,2 @@
+# Amd-mini-PJ
+ Amd
