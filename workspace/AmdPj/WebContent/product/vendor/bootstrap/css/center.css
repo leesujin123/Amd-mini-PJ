@@ -1,0 +1,8 @@
+@charset "utf-8";
+#out {
+ width: 100%;
+ text-align: center;
+ }
+#in {
+ display: inline-block;
+ }

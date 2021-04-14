@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>HBAF</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">아몬드</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">로그인</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">회원가입</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/hbaf-bg3.png')">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+	<div class="container">
+      <a class="navbar-brand" href="index.html">상품</a>
+	  <a class="navbar-brand" href="index.html">공지게시판</a>
+	  <a class="navbar-brand" href="index.html">Q&A게시판</a>
+     </div>
+  </header>
+  
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+	  <style type="text/css">
+        table{
+            margin-left:auto; 
+            margin-right:auto;
+            border:3px solid skyblue;
+        }
+        
+        td{
+            border:1px solid skyblue
+        }
+        
+        #title{
+            background-color:skyblue
+        }
+    </style>
+    
+    <script type="text/javascript">
+    
+        function init(){
+            setComboValue("<%=memberBean.getMail2()%>");
+        }
+ 
+        function setComboValue(val) 
+        {
+            var selectMail = document.getElementById('mail2'); // select 아이디를 가져온다.
+            for (i = 0, j = selectMail.length; i < j; i++)  // select 하단 option 수만큼 반복문 돌린다.
+            {
+                if (selectMail.options[i].value == val)  // 입력된값과 option의 value가 같은지 비교
+                {
+                    selectMail.options[i].selected = true; // 같은경우라면 체크되도록 한다.
+                    break;
+                }
+            }
+        }
+        
+        // 비밀번호 입력여부 체크
+        function checkValue() {
+            if(!document.userInfo.password.value){
+                alert("비밀번호를 입력하세요.");
+                return false;
+            }
+        }
+        
+    </script>
+    
+</head>
+<body onload="init()">
+ 
+        <br><br>
+        <b><font size="6" color="gray">회원정보 수정</font></b>
+        <br><br><br>
+        
+        <!-- 입력한 값을 전송하기 위해 form 태그를 사용한다 -->
+        <!-- 값(파라미터) 전송은 POST 방식 -->
+        <form method="post" action="MainForm.jsp?contentPage=member/pro/ModifyPro.jsp" 
+                name="userInfo" onsubmit="return checkValue()">
+                
+            <table>
+                <tr>
+                    <td id="title">아이디</td>
+                    <td id="title"></td>
+                </tr>
+                <tr>
+                    <td id="title">비밀번호</td>
+                    <td>
+                        <input type="password" name="password" maxlength="50" 
+                            value="">
+                    </td>
+                </tr>
+            </table>    
+            <br><br>    
+            <table>
+ 
+                <tr>
+                    <td id="title">이름</td>
+                    <td></td>
+                </tr>
+                    
+                <tr>
+                    <td id="title">성별</td>
+                    <td></td>
+                </tr>
+                    
+                <tr>
+                    <td id="title">생일</td>
+                    <td>
+                       
+                    </td>
+                </tr>
+                    
+                <tr>
+                    <td id="title">이메일</td>
+                    <td>
+                        <input type="text" name="mail1" maxlength="50" 
+                            value="<%=memberBean.getMail1() %>">
+                        @
+                        <select name="mail2" id="mail2">
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="daum.net" >daum.net</option>
+                            <option value="nate.com">nate.com</option>                        
+                        </select>
+                    </td>
+                </tr>
+                    
+                <tr>
+                    <td id="title">휴대전화</td>
+                    <td>
+                        <input type="text" name="phone" value=""/>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="title">주소</td>
+                    <td>
+                        <input type="text" size="50" name="address"
+                            value=""/>
+                    </td>
+                </tr>
+            </table>
+            <br><br>
+            <input type="button" value="취소" onclick="javascript:window.location='MainForm.jsp'">
+            <input type="submit" value="수정"/>  
+        </form>
+	  </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Your Website 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
